@@ -16,5 +16,15 @@ namespace COMP123_S2019_Lesson9B
         {
             InitializeComponent();
         }
+
+        private void SixButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
