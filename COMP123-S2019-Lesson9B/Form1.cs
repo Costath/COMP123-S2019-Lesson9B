@@ -17,14 +17,26 @@ namespace COMP123_S2019_Lesson9B
             InitializeComponent();
         }
 
-        private void SixButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Thisi is the shared Event Handler for all the calculator buttons - Click Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CalculatorButton_Click(object sender, EventArgs e)
         {
+            var TheButton = sender as Button; //'as' keyword "shapes" the sender as a Button object
 
-        }
+            int buttonValue;
+            bool resultCondition = int.TryParse(TheButton.Text, out buttonValue);
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            if (resultCondition)
+            {
+                ResultLabel.Text += TheButton.Text;
+            }
+            else
+            {
+                ResultLabel.Text = "Not a number";
+            }
         }
     }
 }
