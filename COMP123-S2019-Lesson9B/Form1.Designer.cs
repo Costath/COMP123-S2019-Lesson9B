@@ -43,9 +43,9 @@
             this.ResultLabel = new System.Windows.Forms.Label();
             this.PointButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.HeightLabel = new System.Windows.Forms.Label();
             this.CalculatorButtonTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // CalculatorButtonTableLayoutPanel
@@ -55,6 +55,7 @@
             this.CalculatorButtonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.CalculatorButtonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.CalculatorButtonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.CalculatorButtonTableLayoutPanel.Controls.Add(this.button1, 3, 1);
             this.CalculatorButtonTableLayoutPanel.Controls.Add(this.ResultLabel, 0, 0);
             this.CalculatorButtonTableLayoutPanel.Controls.Add(this.ThreeButton, 2, 3);
             this.CalculatorButtonTableLayoutPanel.Controls.Add(this.TwoButton, 1, 3);
@@ -67,7 +68,6 @@
             this.CalculatorButtonTableLayoutPanel.Controls.Add(this.FourButton, 0, 2);
             this.CalculatorButtonTableLayoutPanel.Controls.Add(this.PointButton, 2, 4);
             this.CalculatorButtonTableLayoutPanel.Controls.Add(this.ClearButton, 3, 2);
-            this.CalculatorButtonTableLayoutPanel.Controls.Add(this.pictureBox1, 3, 1);
             this.CalculatorButtonTableLayoutPanel.Controls.Add(this.ZeroButton, 0, 4);
             this.CalculatorButtonTableLayoutPanel.Controls.Add(this.DoneButton, 3, 3);
             this.CalculatorButtonTableLayoutPanel.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -96,7 +96,7 @@
             this.CalculatorButtonTableLayoutPanel.SetRowSpan(this.DoneButton, 2);
             this.DoneButton.Size = new System.Drawing.Size(64, 93);
             this.DoneButton.TabIndex = 11;
-            this.DoneButton.Tag = "Result";
+            this.DoneButton.Tag = "done";
             this.DoneButton.Text = "Done";
             this.DoneButton.UseVisualStyleBackColor = false;
             this.DoneButton.Click += new System.EventHandler(this.CalculatorButton_Click);
@@ -289,6 +289,7 @@
             this.PointButton.Tag = "decimal";
             this.PointButton.Text = ".";
             this.PointButton.UseVisualStyleBackColor = false;
+            this.PointButton.Click += new System.EventHandler(this.CalculatorButton_Click);
             // 
             // ClearButton
             // 
@@ -305,30 +306,47 @@
             this.ClearButton.Tag = "clear";
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = false;
+            this.ClearButton.Click += new System.EventHandler(this.CalculatorButton_Click);
             // 
-            // pictureBox1
+            // button1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::COMP123_S2019_Lesson9B.Properties.Resources.backbutton;
-            this.pictureBox1.Location = new System.Drawing.Point(213, 51);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 42);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 14;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "back";
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.SteelBlue;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::COMP123_S2019_Lesson9B.Properties.Resources.backbutton;
+            this.button1.Location = new System.Drawing.Point(213, 51);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(64, 42);
+            this.button1.TabIndex = 14;
+            this.button1.Tag = "back";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // HeightLabel
+            // 
+            this.HeightLabel.BackColor = System.Drawing.Color.White;
+            this.HeightLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.HeightLabel.Font = new System.Drawing.Font("Arial", 26F);
+            this.HeightLabel.Location = new System.Drawing.Point(43, 36);
+            this.HeightLabel.Name = "HeightLabel";
+            this.HeightLabel.Size = new System.Drawing.Size(229, 47);
+            this.HeightLabel.TabIndex = 2;
+            this.HeightLabel.Text = "0";
+            this.HeightLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.HeightLabel.Click += new System.EventHandler(this.HeightLabel_Click);
             // 
             // CalculatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(304, 441);
+            this.Controls.Add(this.HeightLabel);
             this.Controls.Add(this.CalculatorButtonTableLayoutPanel);
             this.Name = "CalculatorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
             this.CalculatorButtonTableLayoutPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -350,7 +368,8 @@
         private System.Windows.Forms.Label ResultLabel;
         private System.Windows.Forms.Button PointButton;
         private System.Windows.Forms.Button ClearButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label HeightLabel;
     }
 }
 
